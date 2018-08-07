@@ -1,11 +1,13 @@
 <template>
-    <div class="wrapper">
-        <h1 class="title">
-            <a class="logo" href="/">Kanban card</a>
-        </h1>
-        <div class="actions">
-            <div>
-                <a @click="handlePrintClick()" class="link">Print</a>
+    <div>
+        <div class="wrapper">
+            <h1 class="title">
+                <a class="logo" href="/">Kanban card</a>
+            </h1>
+            <div class="actions">
+                <div>
+                    <a @click="handlePrintClick()" class="link">Print</a>
+                </div>
             </div>
         </div>
     </div>

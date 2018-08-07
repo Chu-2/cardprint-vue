@@ -1,7 +1,7 @@
 <template>
     <div id="app">
         <TheHeader/>
-        <div class="mainWrapper">
+        <div class="wrapper">
             <div class="canvas"></div>
             <div class="controls">
                 <ControlPanel/>
@@ -24,7 +24,7 @@
 </script>
 
 <style scoped>
-    .mainWrapper {
+    .wrapper {
         position: absolute;
         top: 0;
         right: 0;
@@ -47,7 +47,7 @@
     }
 
     @media print {
-        .mainWrapper {
+        .wrapper {
             position: relative;
             display: block;
         }

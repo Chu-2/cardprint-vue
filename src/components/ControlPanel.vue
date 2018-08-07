@@ -1,68 +1,70 @@
 <template>
-    <div class="wrapper">
-        <div class="control">
-            <h3 class="controlHeading">Card color</h3>
+    <div>
+        <div class="wrapper">
+            <div class="control">
+                <h3 class="controlHeading">Card color</h3>
 
-            <chrome-picker :value="colors" class="colorPicker"/>
-        </div>
-
-        <div class="control">
-            <h3 class="controlHeading">Text Color</h3>
-
-            <div class="fgChooser">
-                <input
-                        type="radio"
-                        name="fgColor"
-                        id="fgColorDark"
-                        value="dark"
-                />
-                <label for="fgColorDark">Dark</label>
+                <Compact :value="colors" class="colorPicker"/>
             </div>
 
-            <div class="fgChooser">
-                <input
-                        type="radio"
-                        name="fgColor"
-                        id="fgColorLight"
-                        value="light"
-                />
-                <label for="fgColorLight">Light</label>
+            <div class="control">
+                <h3 class="controlHeading">Text Color</h3>
+
+                <div class="fgChooser">
+                    <input
+                            type="radio"
+                            name="fgColor"
+                            id="fgColorDark"
+                            value="dark"
+                    />
+                    <label for="fgColorDark">Dark</label>
+                </div>
+
+                <div class="fgChooser">
+                    <input
+                            type="radio"
+                            name="fgColor"
+                            id="fgColorLight"
+                            value="light"
+                    />
+                    <label for="fgColorLight">Light</label>
+                </div>
             </div>
-        </div>
 
-        <div class="control">
-            <h3 class="controlHeading">Size</h3>
+            <div class="control">
+                <h3 class="controlHeading">Size</h3>
 
-            <div class="sizeChooser">
-                <input
-                        type="radio"
-                        name="size"
-                        id="sizeBig"
-                        value="big"
-                />
-                <label for="sizeBig">Big</label>
-            </div>
+                <div class="sizeChooser">
+                    <input
+                            type="radio"
+                            name="size"
+                            id="sizeBig"
+                            value="big"
+                    />
+                    <label for="sizeBig">Big</label>
+                </div>
 
-            <div class="sizeChooser">
-                <input
-                        type="radio"
-                        name="size"
-                        id="sizeSmall"
-                        value="small"
-                />
-                <label for="sizeSmall">Small</label>
+                <div class="sizeChooser">
+                    <input
+                            type="radio"
+                            name="size"
+                            id="sizeSmall"
+                            value="small"
+                    />
+                    <label for="sizeSmall">Small</label>
+                </div>
             </div>
         </div>
     </div>
 </template>
 
 <script>
-    import {Chrome} from 'vue-color';
+    import {Compact} from 'vue-color';
 
     export default {
         name: "ControlPanel",
         components: {
-            'chrome-picker': Chrome,
+            Compact,
         },
         data() {
             return {
