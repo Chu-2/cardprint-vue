@@ -1,0 +1,28 @@
+{
+  "name": "cardprint-vue",
+  "version": "1.0.0",
+  "description": "Print cards for your Kanban board",
+  "main": "n/a",
+  "scripts": {
+    "build": "parcel build index.html",
+    "start": "parcel index.html"
+  },
+  "keywords": [
+    "Vue",
+    "kanban",
+    "kanban card printer"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "vue": "^2.5.17",
+    "vue-color": "^2.4.6",
+    "vue-hot-reload-api": "^2.3.0",
+    "vuex": "^3.0.1"
+  },
+  "devDependencies": {
+    "@vue/component-compiler-utils": "^2.1.1",
+    "parcel-bundler": "^1.9.7",
+    "vue-template-compiler": "^2.5.17"
+  }
+}
