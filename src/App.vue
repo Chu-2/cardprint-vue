@@ -2,9 +2,11 @@
   <div id="app">
     <TheHeader/>
     <div class="wrapper">
-      <div class="canvas"></div>
+      <div class="canvas">
+        <CardForm/>
+      </div>
       <div class="controls">
-        <ControlPanel/>
+        <TheControls/>
       </div>
     </div>
   </div>
@@ -12,13 +14,15 @@
 
 <script>
   import TheHeader from './components/TheHeader.vue';
-  import ControlPanel from './components/ControlPanel.vue';
+  import TheControls from './components/TheControls.vue';
+  import CardForm from './components/CardForm.vue';
 
   export default {
     name: 'app',
     components: {
       TheHeader,
-      ControlPanel
+      TheControls,
+      CardForm
     },
   };
 </script>

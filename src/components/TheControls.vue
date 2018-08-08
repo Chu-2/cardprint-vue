@@ -4,7 +4,7 @@
       <div class="control">
         <h3 class="controlHeading">Card color</h3>
 
-        <Compact :value="colors" class="colorPicker"/>
+        <Compact :value="selectedCard.background" @input="handleCardBgColor" class="colorPicker"/>
       </div>
 
       <div class="control">
@@ -66,11 +66,16 @@
     components: {
       Compact,
     },
-    data() {
-      return {
-        colors: '#194d33'
+    computed: {
+      selectedCard() {
+        return this.$store.state.cards[this.$store.state.selectedCard];
       }
-    }
+    },
+    methods: {
+      handleCardBgColor(color) {
+        this.$store.commit('updateCardBgColor', color.hex);
+      },
+    },
   }
 </script>
 
