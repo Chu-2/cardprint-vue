@@ -27,10 +27,24 @@ export default new Vuex.Store({
       state.cards[state.selectedCard].background = value;
     },
     updateCardFgColor(state, value) {
-
+      if (value === 'dark') {
+        state.cards[state.selectedCard].foreground = '#000000';
+        state.cards[state.selectedCard].foregroundControl = 'dark';
+      } else if (value === 'light') {
+        state.cards[state.selectedCard].foreground = '#ffffff';
+        state.cards[state.selectedCard].foregroundControl = 'light';
+      }
     },
     updateCardSize(state, value) {
-
+      if (value === 'big') {
+        state.cards[state.selectedCard].width = '2.75in';
+        state.cards[state.selectedCard].height = '2.75in';
+        state.cards[state.selectedCard].sizeControl = 'big';
+      } else if (value === 'small') {
+        state.cards[state.selectedCard].width = '1.75in';
+        state.cards[state.selectedCard].height = '1.75in';
+        state.cards[state.selectedCard].sizeControl = 'small';
+      }
     },
     updateCardNumber(state, value) {
 

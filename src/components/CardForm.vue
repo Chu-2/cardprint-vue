@@ -2,7 +2,7 @@
   <div class="inner">
     <div class="cardBleed" :style="{backgroundColor: currentCard.background, color: currentCard.foreground}">
       <div class="wrapper">
-        <div class="card">
+        <div class="card" :style="{width: currentCard.width, height: currentCard.height}">
           <div class="number">
             <div class="numberInner">
               <input
@@ -36,9 +36,10 @@
 <script>
   export default {
     name: "CardForm",
+    props: ['card', 'index'],
     computed: {
       currentCard() {
-        return this.$store.state.cards[0];
+        return this.card;
       }
     }
   }

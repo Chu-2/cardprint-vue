@@ -1,12 +1,12 @@
 <template>
   <div id="app">
-    <TheHeader/>
+    <TheHeader></TheHeader>
     <div class="wrapper">
       <div class="canvas">
-        <CardForm/>
+        <CardForm v-for="(card, index) in cards" :card='card' :index="index"></CardForm>
       </div>
       <div class="controls">
-        <TheControls/>
+        <TheControls></TheControls>
       </div>
     </div>
   </div>
@@ -24,6 +24,11 @@
       TheControls,
       CardForm
     },
+    computed: {
+      cards() {
+        return this.$store.state.cards;
+      }
+    }
   };
 </script>
 

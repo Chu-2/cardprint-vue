@@ -16,6 +16,8 @@
               name="fgColor"
               id="fgColorDark"
               value="dark"
+              :checked="selectedCard.foregroundControl  === 'dark'"
+              @change="handleCardFgColor"
           />
           <label for="fgColorDark">Dark</label>
         </div>
@@ -26,6 +28,8 @@
               name="fgColor"
               id="fgColorLight"
               value="light"
+              :checked="selectedCard.foregroundControl === 'light'"
+              @change="handleCardFgColor"
           />
           <label for="fgColorLight">Light</label>
         </div>
@@ -40,6 +44,8 @@
               name="size"
               id="sizeBig"
               value="big"
+              :checked="selectedCard.sizeControl  === 'big'"
+              @change="handleCardSize"
           />
           <label for="sizeBig">Big</label>
         </div>
@@ -50,6 +56,8 @@
               name="size"
               id="sizeSmall"
               value="small"
+              :checked="selectedCard.sizeControl  === 'small'"
+              @change="handleCardSize"
           />
           <label for="sizeSmall">Small</label>
         </div>
@@ -75,6 +83,12 @@
       handleCardBgColor(color) {
         this.$store.commit('updateCardBgColor', color.hex);
       },
+      handleCardFgColor(event) {
+        this.$store.commit('updateCardFgColor', event.target.value);
+      },
+      handleCardSize(event) {
+        this.$store.commit('updateCardSize', event.target.value);
+      }
     },
   }
 </script>
