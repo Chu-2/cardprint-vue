@@ -1,30 +1,46 @@
 <template>
-  <div class="inner">
+  <div class="inner" :style="{order: index}">
     <div class="cardBleed" :style="{backgroundColor: currentCard.background, color: currentCard.foreground}">
       <div class="wrapper">
         <div class="card" :style="{width: currentCard.width, height: currentCard.height}">
           <div class="number">
             <div class="numberInner">
               <input
+                  class="numberInput"
                   type="text"
                   placeholder="10001"
-                  class="numberInput"
+                  :value="currentCard.number"
+                  @change="handleCardNumber"
               />
             </div>
           </div>
           <div class="body">
             <div class="bodyInputWrapper">
-              <textarea class="bodyInput"></textarea>
+              <textarea
+                  class="bodyInput"
+                  :value="currentCard.subject"
+                  @change="handleCardSubject">
+              </textarea>
             </div>
           </div>
 
           <div class="footer">
             <div class="parentNumber">
-              <input type="text" placeholder="Tracker"/>
+              <input
+                  type="text"
+                  placeholder="Tracker"
+                  :value="currentCard.tracker"
+                  @change="handleCardTracker"
+              />
             </div>
 
             <div class="project">
-              <input type="text" placeholder="Product"/>
+              <input
+                  type="text"
+                  placeholder="Product"
+                  :value="currentCard.product"
+                  @change="handleCardProduct"
+              />
             </div>
           </div>
         </div>
@@ -41,18 +57,32 @@
       currentCard() {
         return this.card;
       }
+    },
+    methods: {
+      selectCard() {
+        this.$store.commit('updateSelectedCard', this.index);
+      },
+      handleCardNumber(event) {
+        this.$store.commit('updateCardNumber', event.target.value);
+      },
+      handleCardSubject(event) {
+        this.$store.commit('updateCardSubject', event.target.value);
+      },
+      handleCardTracker(event) {
+        this.$store.commit('updateCardTracker', event.target.value);
+      },
+      handleCardProduct(event) {
+        this.$store.commit('updateCardProduct', event.target.value);
+      }
     }
   }
 </script>
 
 <style scoped>
   .inner {
-    position: absolute;
-    z-index: 20;
-    left: 50%;
-    top: 50%;
     transform: translate(-50%, -50%);
     padding-top: 4rem;
+    flex: none;
   }
 
   @media print {
@@ -71,8 +101,6 @@
 
     /* Printing workarounds */
     -webkit-print-color-adjust: exact;
-    printer-colors: exact;
-    color-adjust: exact;
   }
 
   .wrapper {

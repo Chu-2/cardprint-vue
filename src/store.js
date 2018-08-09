@@ -3,8 +3,8 @@ import Vuex from 'vuex';
 
 Vue.use(Vuex);
 
-export default new Vuex.Store({
-  state: {
+function initialState() {
+  return {
     selectedCard: 0,
     cards: [
       {
@@ -15,12 +15,39 @@ export default new Vuex.Store({
         height: '2.75in',
         sizeControl: 'big',
         number: '',
-        subject: ''
+        subject: '',
+        tracker: '',
+        product: '',
       }
     ]
-  },
+  }
+}
+
+export default new Vuex.Store({
+  state: initialState(),
   mutations: {
-    selectCard(state, index) {
+    createCard(state) {
+      state.cards.push({
+        background: '#ffffff',
+        foreground: '#000000',
+        foregroundControl: 'dark',
+        width: '2.75in',
+        height: '2.75in',
+        sizeControl: 'big',
+        number: '',
+        subject: '',
+        tracker: '',
+        product: '',
+      });
+      state.selectedCard = state.cards.length - 1;
+    },
+    resetState(state) {
+      const initial = initialState();
+      Object.keys(initial).forEach(key => {
+        state[key] = initial[key]
+      })
+    },
+    updateSelectedCard(state, index) {
       state.selectedCard = index;
     },
     updateCardBgColor(state, value) {
@@ -47,10 +74,16 @@ export default new Vuex.Store({
       }
     },
     updateCardNumber(state, value) {
-
+      state.cards[state.selectedCard].number = value;
     },
     updateCardSubject(state, value) {
-
+      state.cards[state.selectedCard].subject = value;
+    },
+    updateCardTracker(state, value) {
+      state.cards[state.selectedCard].tracker = value;
+    },
+    updateCardProduct(state, value) {
+      state.cards[state.selectedCard].product = value;
     }
   }
 });

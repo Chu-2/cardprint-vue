@@ -2,9 +2,20 @@
   <div>
     <div class="wrapper">
       <div class="control">
+        <h3 class="controlHeading">Manage</h3>
+
+        <button @click="newCard">New card</button>
+        <button @click="reset">Reset</button>
+      </div>
+
+      <div class="control">
         <h3 class="controlHeading">Card color</h3>
 
-        <Compact :value="selectedCard.background" @input="handleCardBgColor" class="colorPicker"/>
+        <Compact
+            class="colorPicker"
+            :value="selectedCard.background"
+            @input="handleCardBgColor"
+        />
       </div>
 
       <div class="control">
@@ -80,6 +91,12 @@
       }
     },
     methods: {
+      newCard() {
+        this.$store.commit('createCard');
+      },
+      reset() {
+        this.$store.commit('resetState');
+      },
       handleCardBgColor(color) {
         this.$store.commit('updateCardBgColor', color.hex);
       },
