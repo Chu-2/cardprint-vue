@@ -4,8 +4,8 @@
   "description": "Print cards for your Kanban board",
   "main": "n/a",
   "scripts": {
-    "build": "parcel build index.html",
-    "start": "parcel index.html"
+    "build": "parcel build src/index.html",
+    "start": "parcel src/index.html"
   },
   "keywords": [
     "Vue",

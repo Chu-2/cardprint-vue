@@ -37,6 +37,9 @@ const mutations = {
     state.selectedCardIndex = state.cards.length - 1;
   },
   removeSelectedCard(state) {
+    if (state.cards.length === 1) {
+      return;
+    }
     state.cards.splice(state.selectedCardIndex, 1);
     state.selectedCardIndex = 0;
   },
