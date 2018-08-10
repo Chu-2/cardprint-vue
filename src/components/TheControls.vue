@@ -11,11 +11,7 @@
       <div class="control">
         <h3 class="controlHeading">Card color</h3>
 
-        <Compact
-            class="colorPicker"
-            :value="selectedCard.background"
-            @input="handleCardBgColor"
-        />
+        <Compact class="colorPicker" v-model="cardBgColor"/>
       </div>
 
       <div class="control">
@@ -27,8 +23,7 @@
               name="fgColor"
               id="fgColorDark"
               value="dark"
-              :checked="selectedCard.foregroundControl  === 'dark'"
-              @change="handleCardFgColor"
+              v-model="cardFgColor"
           />
           <label for="fgColorDark">Dark</label>
         </div>
@@ -39,8 +34,7 @@
               name="fgColor"
               id="fgColorLight"
               value="light"
-              :checked="selectedCard.foregroundControl === 'light'"
-              @change="handleCardFgColor"
+              v-model="cardFgColor"
           />
           <label for="fgColorLight">Light</label>
         </div>
@@ -55,8 +49,7 @@
               name="size"
               id="sizeBig"
               value="big"
-              :checked="selectedCard.sizeControl  === 'big'"
-              @change="handleCardSize"
+              v-model="cardSize"
           />
           <label for="sizeBig">Big</label>
         </div>
@@ -67,8 +60,7 @@
               name="size"
               id="sizeSmall"
               value="small"
-              :checked="selectedCard.sizeControl  === 'small'"
-              @change="handleCardSize"
+              v-model="cardSize"
           />
           <label for="sizeSmall">Small</label>
         </div>
@@ -86,8 +78,37 @@
       Compact,
     },
     computed: {
-      selectedCard() {
-        return this.$store.state.cards[this.$store.state.selectedCard];
+      cardBgColor: {
+        get() {
+          return this.$store.getters.selectedCard.background;
+        },
+        set(color) {
+          this.$store.commit('updateCardBgColor', color.hex);
+        }
+      },
+      cardFgColor: {
+        get() {
+          return this.$store.getters.selectedCard.foregroundControl;
+        },
+        set(value) {
+          if (value === 'dark') {
+            this.$store.commit('updateCardFgColor', {foreground: '#000000', foregroundControl: 'dark'});
+          } else if (value === 'light') {
+            this.$store.commit('updateCardFgColor', {foreground: '#ffffff', foregroundControl: 'light'});
+          }
+        }
+      },
+      cardSize: {
+        get() {
+          return this.$store.getters.selectedCard.sizeControl;
+        },
+        set(value) {
+          if (value === 'big') {
+            this.$store.commit('updateCardSize', {width: '2.75in', height: '2.75in', sizeControl: 'big'});
+          } else if (value === 'small') {
+            this.$store.commit('updateCardSize', {width: '1.75in', height: '1.75in', sizeControl: 'small'});
+          }
+        }
       }
     },
     methods: {
@@ -96,17 +117,8 @@
       },
       reset() {
         this.$store.commit('resetState');
-      },
-      handleCardBgColor(color) {
-        this.$store.commit('updateCardBgColor', color.hex);
-      },
-      handleCardFgColor(event) {
-        this.$store.commit('updateCardFgColor', event.target.value);
-      },
-      handleCardSize(event) {
-        this.$store.commit('updateCardSize', event.target.value);
       }
-    },
+    }
   }
 </script>
 

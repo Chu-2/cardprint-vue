@@ -60,7 +60,7 @@
     },
     methods: {
       selectCard() {
-        this.$store.commit('updateSelectedCard', this.index);
+        this.$store.commit('updateSelectedCardIndex', this.index);
       },
       handleCardNumber(event) {
         this.$store.commit('updateCardNumber', event.target.value);

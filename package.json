@@ -21,7 +21,7 @@
     "vuex": "^3.0.1"
   },
   "devDependencies": {
-    "@vue/component-compiler-utils": "^2.1.1",
+    "@vue/component-compiler-utils": "^2.1.2",
     "parcel-bundler": "^1.9.7",
     "vue-template-compiler": "^2.5.17"
   }

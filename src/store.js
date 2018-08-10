@@ -5,7 +5,7 @@ Vue.use(Vuex);
 
 function initialState() {
   return {
-    selectedCard: 0,
+    selectedCardIndex: 0,
     cards: [
       {
         background: '#ffffff',
@@ -39,7 +39,7 @@ export default new Vuex.Store({
         tracker: '',
         product: '',
       });
-      state.selectedCard = state.cards.length - 1;
+      state.selectedCardIndex = state.cards.length - 1;
     },
     resetState(state) {
       const initial = initialState();
@@ -47,43 +47,37 @@ export default new Vuex.Store({
         state[key] = initial[key]
       })
     },
-    updateSelectedCard(state, index) {
-      state.selectedCard = index;
+    updateSelectedCardIndex(state, index) {
+      state.selectedCardIndex = index;
     },
     updateCardBgColor(state, value) {
-      state.cards[state.selectedCard].background = value;
+      state.cards[state.selectedCardIndex].background = value;
     },
-    updateCardFgColor(state, value) {
-      if (value === 'dark') {
-        state.cards[state.selectedCard].foreground = '#000000';
-        state.cards[state.selectedCard].foregroundControl = 'dark';
-      } else if (value === 'light') {
-        state.cards[state.selectedCard].foreground = '#ffffff';
-        state.cards[state.selectedCard].foregroundControl = 'light';
-      }
+    updateCardFgColor(state, payload) {
+      state.cards[state.selectedCardIndex].foreground = payload.foreground;
+      state.cards[state.selectedCardIndex].foregroundControl = payload.foregroundControl;
     },
-    updateCardSize(state, value) {
-      if (value === 'big') {
-        state.cards[state.selectedCard].width = '2.75in';
-        state.cards[state.selectedCard].height = '2.75in';
-        state.cards[state.selectedCard].sizeControl = 'big';
-      } else if (value === 'small') {
-        state.cards[state.selectedCard].width = '1.75in';
-        state.cards[state.selectedCard].height = '1.75in';
-        state.cards[state.selectedCard].sizeControl = 'small';
-      }
+    updateCardSize(state, payload) {
+      state.cards[state.selectedCardIndex].width = payload.width;
+      state.cards[state.selectedCardIndex].height = payload.height;
+      state.cards[state.selectedCardIndex].sizeControl = payload.sizeControl;
     },
     updateCardNumber(state, value) {
-      state.cards[state.selectedCard].number = value;
+      state.cards[state.selectedCardIndex].number = value;
     },
     updateCardSubject(state, value) {
-      state.cards[state.selectedCard].subject = value;
+      state.cards[state.selectedCardIndex].subject = value;
     },
     updateCardTracker(state, value) {
-      state.cards[state.selectedCard].tracker = value;
+      state.cards[state.selectedCardIndex].tracker = value;
     },
     updateCardProduct(state, value) {
-      state.cards[state.selectedCard].product = value;
+      state.cards[state.selectedCardIndex].product = value;
+    }
+  },
+  getters: {
+    selectedCard(state) {
+      return state.cards[state.selectedCardIndex];
     }
   }
 });

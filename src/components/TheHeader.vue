@@ -6,7 +6,7 @@
       </h1>
       <div class="actions">
         <div>
-          <a @click="handlePrintClick" class="link">Print</a>
+          <a class="link" @click="handlePrintClick">Print</a>
         </div>
       </div>
     </div>
