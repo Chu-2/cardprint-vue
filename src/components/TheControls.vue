@@ -5,6 +5,7 @@
         <h3 class="controlHeading">Manage</h3>
 
         <button @click="newCard">New card</button>
+        <button @click="removeCard">Remove</button>
         <button @click="reset">Reset</button>
       </div>
 
@@ -80,7 +81,7 @@
     computed: {
       cardBgColor: {
         get() {
-          return this.$store.getters.selectedCard.background;
+          return this.$store.getters.getSelectedCard.background;
         },
         set(color) {
           this.$store.commit('updateCardBgColor', color.hex);
@@ -88,7 +89,7 @@
       },
       cardFgColor: {
         get() {
-          return this.$store.getters.selectedCard.foregroundControl;
+          return this.$store.getters.getSelectedCard.foregroundControl;
         },
         set(value) {
           if (value === 'dark') {
@@ -100,7 +101,7 @@
       },
       cardSize: {
         get() {
-          return this.$store.getters.selectedCard.sizeControl;
+          return this.$store.getters.getSelectedCard.sizeControl;
         },
         set(value) {
           if (value === 'big') {
@@ -113,7 +114,21 @@
     },
     methods: {
       newCard() {
-        this.$store.commit('createCard');
+        this.$store.commit('createCard', {
+          background: this.$store.getters.getSelectedCard.background,
+          foreground: this.$store.getters.getSelectedCard.foreground,
+          foregroundControl: this.$store.getters.getSelectedCard.foregroundControl,
+          width: this.$store.getters.getSelectedCard.width,
+          height: this.$store.getters.getSelectedCard.height,
+          sizeControl: this.$store.getters.getSelectedCard.sizeControl,
+          number: '',
+          subject: '',
+          tracker: '',
+          product: '',
+        });
+      },
+      removeCard() {
+        this.$store.commit('removeSelectedCard');
       },
       reset() {
         this.$store.commit('resetState');

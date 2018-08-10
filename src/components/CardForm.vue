@@ -1,6 +1,7 @@
 <template>
   <div class="inner" :style="{order: index}">
-    <div class="cardBleed" :style="{backgroundColor: currentCard.background, color: currentCard.foreground}">
+    <div :class="['cardBleed', selectedClass]"
+         :style="{backgroundColor: currentCard.background, color: currentCard.foreground}">
       <div class="wrapper">
         <div class="card" :style="{width: currentCard.width, height: currentCard.height}">
           <div class="number">
@@ -11,6 +12,7 @@
                   placeholder="10001"
                   :value="currentCard.number"
                   @change="handleCardNumber"
+                  @focus="selectCard"
               />
             </div>
           </div>
@@ -19,7 +21,8 @@
               <textarea
                   class="bodyInput"
                   :value="currentCard.subject"
-                  @change="handleCardSubject">
+                  @change="handleCardSubject"
+                  @focus="selectCard">
               </textarea>
             </div>
           </div>
@@ -31,6 +34,7 @@
                   placeholder="Tracker"
                   :value="currentCard.tracker"
                   @change="handleCardTracker"
+                  @focus="selectCard"
               />
             </div>
 
@@ -40,6 +44,7 @@
                   placeholder="Product"
                   :value="currentCard.product"
                   @change="handleCardProduct"
+                  @focus="selectCard"
               />
             </div>
           </div>
@@ -56,6 +61,10 @@
     computed: {
       currentCard() {
         return this.card;
+      },
+      selectedClass() {
+        return (this.index === this.$store.state.selectedCardIndex && this.$store.state.cards.length > 1) ?
+          'selected' : '';
       }
     },
     methods: {
@@ -81,8 +90,6 @@
 <style scoped>
   .inner {
     transform: translate(-50%, -50%);
-    padding-top: 4rem;
-    flex: none;
   }
 
   @media print {
@@ -101,6 +108,10 @@
 
     /* Printing workarounds */
     -webkit-print-color-adjust: exact;
+  }
+
+  .selected {
+    border: 3px solid blue;
   }
 
   .wrapper {
