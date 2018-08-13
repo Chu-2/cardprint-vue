@@ -32,6 +32,16 @@
   };
 </script>
 
+<style>
+  :root {
+    --near-black: #111111;
+    --near-white: #F4F4F4;
+    --washed-yellow: #FFFCEB;
+    --light-yellow: #FBF1A9;
+    --light-green: #9EEBCF;
+  }
+</style>
+
 <style scoped>
   .wrapper {
     position: absolute;
@@ -56,8 +66,8 @@
 
   .controls {
     width: 18rem;
-    background-color: #fffceb;
-    border-left: 1px solid #fbf1a9;
+    background-color: var(--washed-yellow);
+    border-left: 1px solid var(--light-yellow);
   }
 
   @media print {

@@ -32,7 +32,7 @@
     z-index: 10;
     display: flex;
     justify-content: space-between;
-    background-color: #111111;
+    background-color: var(--near-black);
     padding: 1rem;
   }
 
@@ -42,7 +42,7 @@
   }
 
   .logo {
-    color: #f4f4f4;
+    color: var(--near-white);
     text-decoration: none;
   }
 
@@ -51,23 +51,19 @@
   }
 
   .link {
-    border-bottom: 1px dotted #f4f4f4;
+    border-bottom: 1px dotted var(--near-white);
     text-decoration: none;
-    color: #f4f4f4;
+    color: var(--near-white);
   }
 
   .link:hover {
-    color: #9eebcf;
-    border-bottom-color: #9eebcf;
+    color: var(--light-green);
+    border-bottom-color: var(--light-green);
     cursor: pointer;
   }
 
   @media print {
     .wrapper {
-      display: none;
-    }
-
-    .logo {
       display: none;
     }
   }

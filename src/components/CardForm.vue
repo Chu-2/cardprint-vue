@@ -92,15 +92,6 @@
     transform: translate(-50%, -50%);
   }
 
-  @media print {
-    .inner {
-      position: relative;
-      top: 0;
-      left: 0;
-      transform: none;
-    }
-  }
-
   .cardBleed {
     display: inline-block;
     margin-left: 1rem;
@@ -189,5 +180,18 @@
 
   .project input {
     text-align: right;
+  }
+
+  @media print {
+    .inner {
+      position: relative;
+      top: 0;
+      left: 0;
+      transform: none;
+    }
+
+    .selected {
+      border: none;
+    }
   }
 </style>
