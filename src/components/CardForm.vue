@@ -89,12 +89,11 @@
 
 <style scoped>
   .inner {
-    transform: translate(-50%, -50%);
   }
 
   .cardBleed {
     display: inline-block;
-    margin-left: 1rem;
+    margin: 1rem;
     transition: background-color 0.2s ease, color 0.2s ease;
 
     /* Printing workarounds */

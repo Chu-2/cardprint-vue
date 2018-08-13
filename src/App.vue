@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div class="main" id="app">
     <TheHeader></TheHeader>
     <div class="wrapper">
       <div class="canvas">
@@ -40,26 +40,32 @@
     --light-yellow: #FBF1A9;
     --light-green: #9EEBCF;
   }
+
+  html,
+  body {
+    height: 100%;
+    margin: 0;
+  }
 </style>
 
 <style scoped>
+  .main {
+    display: flex;
+    flex-flow: column;
+    height: 100%;
+  }
+
   .wrapper {
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
+    flex: 1 1 auto;
     display: flex;
     justify-content: space-between;
     align-items: stretch;
   }
 
   .canvas {
-    position: relative;
     flex: 1;
     display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
+    flex-flow: row wrap;
     justify-content: center;
     align-items: center;
   }

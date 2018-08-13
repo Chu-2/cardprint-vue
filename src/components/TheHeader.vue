@@ -28,8 +28,7 @@
 
 <style scoped>
   .wrapper {
-    position: relative;
-    z-index: 10;
+    flex: 0 1 auto;
     display: flex;
     justify-content: space-between;
     background-color: var(--near-black);

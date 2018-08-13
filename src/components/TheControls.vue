@@ -140,7 +140,7 @@
 <style scoped>
   .wrapper {
     margin: 1rem;
-    padding-top: 4rem;
+    padding-top: 1rem;
   }
 
   .control {
