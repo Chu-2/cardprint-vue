@@ -89,11 +89,11 @@
 
 <style scoped>
   .inner {
+    margin: 1rem;
   }
 
   .cardBleed {
     display: inline-block;
-    margin: 1rem;
     transition: background-color 0.2s ease, color 0.2s ease;
 
     /* Printing workarounds */
@@ -101,7 +101,7 @@
   }
 
   .selected {
-    border: 3px solid blue;
+    outline: 3px solid var(--near-blue);
   }
 
   .wrapper {
@@ -111,7 +111,7 @@
   .card {
     display: flex;
     flex-direction: column;
-    border: 1px dashed black;
+    border: 1px dashed var(--near-black);
     overflow: hidden;
     transition: width 0.2s ease, height 0.2s ease;
   }
@@ -190,7 +190,7 @@
     }
 
     .selected {
-      border: none;
+      outline: none;
     }
   }
 </style>

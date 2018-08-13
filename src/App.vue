@@ -39,6 +39,7 @@
     --washed-yellow: #FFFCEB;
     --light-yellow: #FBF1A9;
     --light-green: #9EEBCF;
+    --near-blue: #1111FF;
   }
 
   html,
