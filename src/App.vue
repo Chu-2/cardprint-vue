@@ -13,6 +13,7 @@
 </template>
 
 <script>
+  import QueryString from 'querystringify';
   import TheHeader from './components/TheHeader.vue';
   import TheControls from './components/TheControls.vue';
   import CardForm from './components/CardForm.vue';
@@ -28,6 +29,11 @@
       cards() {
         return this.$store.state.cards;
       }
+    },
+    created() {
+      let query = QueryString.parse(location.search);
+      this.$store.commit('updateCardNumber', query.number);
+      this.$store.commit('updateCardSubject', query.subject);
     }
   };
 </script>

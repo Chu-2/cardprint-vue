@@ -15,8 +15,9 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
+    "querystringify": "^2.0.0",
     "vue": "^2.5.17",
-    "vue-color": "^2.4.6",
+    "vue-color": "^2.5.0",
     "vue-hot-reload-api": "^2.3.0",
     "vuex": "^3.0.1"
   },
