@@ -85,8 +85,11 @@
 
   @media print {
     .wrapper {
-      position: relative;
       display: block;
+    }
+
+    .canvas {
+      align-items: flex-end;
     }
 
     .controls {

@@ -182,13 +182,6 @@
   }
 
   @media print {
-    .inner {
-      position: relative;
-      top: 0;
-      left: 0;
-      transform: none;
-    }
-
     .selected {
       outline: none;
     }
