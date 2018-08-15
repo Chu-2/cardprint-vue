@@ -1,16 +1,16 @@
 <template>
   <div class="inner" :style="{order: index}">
     <div :class="['cardBleed', selectedClass]"
-         :style="{backgroundColor: currentCard.background, color: currentCard.foreground}">
+         :style="{backgroundColor: card.background, color: card.foreground}">
       <div class="wrapper">
-        <div class="card" :style="{width: currentCard.width, height: currentCard.height}">
+        <div class="card" :style="{width: card.width, height: card.height}">
           <div class="number">
             <div class="numberInner">
               <input
                   class="numberInput"
                   type="text"
                   placeholder="10001"
-                  :value="currentCard.number"
+                  :value="card.number"
                   @change="handleCardNumber"
                   @focus="selectCard"
               />
@@ -20,7 +20,7 @@
             <div class="bodyInputWrapper">
               <textarea
                   class="bodyInput"
-                  :value="currentCard.subject"
+                  :value="card.subject"
                   @change="handleCardSubject"
                   @focus="selectCard">
               </textarea>
@@ -32,7 +32,7 @@
               <input
                   type="text"
                   placeholder="Tracker"
-                  :value="currentCard.tracker"
+                  :value="card.tracker"
                   @change="handleCardTracker"
                   @focus="selectCard"
               />
@@ -42,7 +42,7 @@
               <input
                   type="text"
                   placeholder="Product"
-                  :value="currentCard.product"
+                  :value="card.product"
                   @change="handleCardProduct"
                   @focus="selectCard"
               />
@@ -59,9 +59,6 @@
     name: "CardForm",
     props: ['card', 'index'],
     computed: {
-      currentCard() {
-        return this.card;
-      },
       selectedClass() {
         return (this.index === this.$store.state.selectedCardIndex && this.$store.state.cards.length > 1) ?
           'selected' : '';

@@ -41,7 +41,9 @@ const mutations = {
       return;
     }
     state.cards.splice(state.selectedCardIndex, 1);
-    state.selectedCardIndex = 0;
+
+    state.selectedCardIndex = state.selectedCardIndex === state.cards.length ?
+      state.selectedCardIndex - 1 : state.selectedCardIndex;
   },
   resetState(state) {
     const initial = initialState();
