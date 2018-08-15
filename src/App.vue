@@ -3,7 +3,7 @@
     <TheHeader></TheHeader>
     <div class="wrapper">
       <div class="canvas">
-        <CardForm v-for="(card, index) in cards" :card='card' :index="index"></CardForm>
+        <CardForm v-for="(card, index) in cards" :card="card" :index="index" :key="index"></CardForm>
       </div>
       <div class="controls">
         <TheControls></TheControls>

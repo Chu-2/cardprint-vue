@@ -79,9 +79,12 @@
       Compact,
     },
     computed: {
+      selectedCard() {
+        return this.$store.getters.getSelectedCard;
+      },
       cardBgColor: {
         get() {
-          return this.$store.getters.getSelectedCard.background;
+          return this.selectedCard.background;
         },
         set(color) {
           this.$store.commit('updateCardBgColor', color.hex);
@@ -89,7 +92,7 @@
       },
       cardFgColor: {
         get() {
-          return this.$store.getters.getSelectedCard.foregroundControl;
+          return this.selectedCard.foregroundControl;
         },
         set(value) {
           if (value === 'dark') {
@@ -101,7 +104,7 @@
       },
       cardSize: {
         get() {
-          return this.$store.getters.getSelectedCard.sizeControl;
+          return this.selectedCard.sizeControl;
         },
         set(value) {
           if (value === 'big') {
@@ -115,16 +118,16 @@
     methods: {
       newCard() {
         this.$store.commit('createCard', {
-          background: this.$store.getters.getSelectedCard.background,
-          foreground: this.$store.getters.getSelectedCard.foreground,
-          foregroundControl: this.$store.getters.getSelectedCard.foregroundControl,
-          width: this.$store.getters.getSelectedCard.width,
-          height: this.$store.getters.getSelectedCard.height,
-          sizeControl: this.$store.getters.getSelectedCard.sizeControl,
+          background: this.selectedCard.background,
+          foreground: this.selectedCard.foreground,
+          foregroundControl: this.selectedCard.foregroundControl,
+          width: this.selectedCard.width,
+          height: this.selectedCard.height,
+          sizeControl: this.selectedCard.sizeControl,
           number: '',
           subject: '',
-          tracker: '',
-          product: '',
+          tracker: this.selectedCard.tracker,
+          product: this.selectedCard.product,
         });
       },
       removeCard() {
