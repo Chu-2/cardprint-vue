@@ -92,9 +92,6 @@
   .cardBleed {
     display: inline-block;
     transition: background-color 0.2s ease, color 0.2s ease;
-
-    /* Printing workarounds */
-    -webkit-print-color-adjust: exact;
   }
 
   .selected {
@@ -179,6 +176,11 @@
   }
 
   @media print {
+    .cardBleed {
+      -webkit-print-color-adjust: exact;
+      color-adjust: exact;
+    }
+
     .selected {
       outline: none;
     }

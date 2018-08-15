@@ -47,9 +47,7 @@ const mutations = {
   },
   resetState(state) {
     const initial = initialState();
-    Object.keys(initial).forEach(key => {
-      state[key] = initial[key]
-    })
+    Object.keys(initial).forEach(key => state[key] = initial[key]);
   },
   updateSelectedCardIndex(state, index) {
     state.selectedCardIndex = index;
