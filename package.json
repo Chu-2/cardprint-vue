@@ -15,15 +15,15 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "querystringify": "^2.0.0",
+    "querystringify": "^2.1.0",
     "vue": "^2.5.17",
-    "vue-color": "^2.5.0",
-    "vue-hot-reload-api": "^2.3.0",
+    "vue-color": "^2.7.0",
+    "vue-hot-reload-api": "^2.3.1",
     "vuex": "^3.0.1"
   },
   "devDependencies": {
-    "@vue/component-compiler-utils": "^2.1.2",
-    "parcel-bundler": "^1.9.7",
+    "@vue/component-compiler-utils": "^2.2.0",
+    "parcel-bundler": "^1.10.3",
     "vue-template-compiler": "^2.5.17"
   }
 }
