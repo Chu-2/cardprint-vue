@@ -2,10 +2,10 @@
   "name": "cardprint-vue",
   "version": "1.0.0",
   "description": "Print cards for your Kanban board",
-  "main": "n/a",
+  "main": "src/App.vue",
   "scripts": {
     "build": "parcel build src/index.html",
-    "start": "parcel src/index.html"
+    "start": "parcel src/index.html --open"
   },
   "keywords": [
     "Vue",

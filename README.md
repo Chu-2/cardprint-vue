@@ -6,6 +6,6 @@ Try it out here: <https://cardprintvue.firebaseapp.com/>
 
 ## Local Development
 
-* Install dependencies: `npm install`.
-* Start a development server: `npm run start`.
-* Build for production: `npm run build`.
+* Install dependencies: `yarn` or `yarn install`.
+* Start a development server: `yarn start`.
+* Build for production: `yarn build`.
