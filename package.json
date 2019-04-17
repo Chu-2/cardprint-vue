@@ -4,7 +4,8 @@
   "description": "Print cards for your Kanban board",
   "main": "src/App.vue",
   "scripts": {
-    "build": "parcel build src/index.html",
+    "prebuild": "rm -rf dist",
+    "build": "parcel build src/index.html --no-source-maps",
     "start": "parcel src/index.html --open"
   },
   "keywords": [
