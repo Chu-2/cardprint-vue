@@ -4,8 +4,12 @@
   "description": "Print cards for your Kanban board",
   "main": "src/App.vue",
   "scripts": {
-    "build": "parcel build src/index.html",
-    "start": "parcel src/index.html --open"
+    "prebuild": "rm -rf dist",
+    "build": "yarn build:site && yarn build:lambda",
+    "build:site": "parcel build src/index.html --no-source-maps",
+    "build:lambda": "netlify-lambda build src/lambda",
+    "start": "parcel src/index.html --open",
+    "start:lambda": "netlify-lambda serve src/lambda"
   },
   "keywords": [
     "Vue",
@@ -15,6 +19,8 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
+    "axios": "^0.18.0",
+    "netlify-lambda": "^1.4.5",
     "querystringify": "^2.1.0",
     "vue": "^2.5.17",
     "vue-color": "^2.7.0",
