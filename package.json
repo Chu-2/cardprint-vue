@@ -5,7 +5,8 @@
   "main": "src/App.vue",
   "scripts": {
     "prebuild": "rm -rf dist",
-    "build": "parcel build src/index.html --no-source-maps",
+    "build": "yarn build:site && yarn build:lambda",
+    "build:site": "parcel build src/index.html --no-source-maps",
     "build:lambda": "netlify-lambda build src/lambda",
     "start": "parcel src/index.html --open",
     "start:lambda": "netlify-lambda serve src/lambda"
