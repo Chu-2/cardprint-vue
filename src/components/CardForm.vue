@@ -69,16 +69,16 @@
         this.$store.commit('updateSelectedCardIndex', this.index);
       },
       handleCardNumber(event) {
-        this.$store.commit('updateCardNumber', event.target.value);
+        this.$store.commit('updateCard', {number: event.target.value});
       },
       handleCardSubject(event) {
-        this.$store.commit('updateCardSubject', event.target.value);
+        this.$store.commit('updateCard', {subject: event.target.value});
       },
       handleCardTracker(event) {
-        this.$store.commit('updateCardTracker', event.target.value);
+        this.$store.commit('updateCard', {tracker: event.target.value});
       },
       handleCardProduct(event) {
-        this.$store.commit('updateCardProduct', event.target.value);
+        this.$store.commit('updateCard', {product: event.target.value});
       }
     }
   }

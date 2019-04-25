@@ -32,8 +32,8 @@
     },
     created() {
       let query = QueryString.parse(location.search);
-      this.$store.commit('updateCardNumber', query.number);
-      this.$store.commit('updateCardSubject', query.subject);
+      this.$store.commit('updateCard', {number: query.number});
+      this.$store.commit('updateCard', {subject: query.subject});
     }
   };
 </script>

@@ -52,29 +52,9 @@ const mutations = {
   updateSelectedCardIndex(state, index) {
     state.selectedCardIndex = index;
   },
-  updateCardBgColor(state, value) {
-    selectedCard().background = value;
-  },
-  updateCardFgColor(state, payload) {
-    selectedCard().foreground = payload.foreground;
-    selectedCard().foregroundControl = payload.foregroundControl;
-  },
-  updateCardSize(state, payload) {
-    selectedCard().width = payload.width;
-    selectedCard().height = payload.height;
-    selectedCard().sizeControl = payload.sizeControl;
-  },
-  updateCardNumber(state, value) {
-    selectedCard().number = value;
-  },
-  updateCardSubject(state, value) {
-    selectedCard().subject = value;
-  },
-  updateCardTracker(state, value) {
-    selectedCard().tracker = value;
-  },
-  updateCardProduct(state, value) {
-    selectedCard().product = value;
+  updateCard(state, payload) {
+    const newCard = {...state.cards[state.selectedCardIndex], ...payload};
+    state.cards.splice(state.selectedCardIndex, 1, newCard);
   }
 };
 

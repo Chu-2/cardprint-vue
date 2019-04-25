@@ -87,7 +87,7 @@
           return this.selectedCard.background;
         },
         set(color) {
-          this.$store.commit('updateCardBgColor', color.hex);
+          this.$store.commit('updateCard', {background: color.hex})
         }
       },
       cardFgColor: {
@@ -96,9 +96,9 @@
         },
         set(value) {
           if (value === 'dark') {
-            this.$store.commit('updateCardFgColor', {foreground: '#000000', foregroundControl: 'dark'});
+            this.$store.commit('updateCard', {foreground: '#000000', foregroundControl: 'dark'});
           } else if (value === 'light') {
-            this.$store.commit('updateCardFgColor', {foreground: '#ffffff', foregroundControl: 'light'});
+            this.$store.commit('updateCard', {foreground: '#ffffff', foregroundControl: 'light'});
           }
         }
       },
@@ -108,9 +108,9 @@
         },
         set(value) {
           if (value === 'big') {
-            this.$store.commit('updateCardSize', {width: '2.75in', height: '2.75in', sizeControl: 'big'});
+            this.$store.commit('updateCard', {width: '2.75in', height: '2.75in', sizeControl: 'big'});
           } else if (value === 'small') {
-            this.$store.commit('updateCardSize', {width: '1.75in', height: '1.75in', sizeControl: 'small'});
+            this.$store.commit('updateCard', {width: '1.75in', height: '1.75in', sizeControl: 'small'});
           }
         }
       }
