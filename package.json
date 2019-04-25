@@ -2,34 +2,60 @@
   "name": "cardprint-vue",
   "version": "1.0.0",
   "description": "Print cards for your Kanban board",
-  "main": "src/App.vue",
+  "author": "Rich Yu",
   "scripts": {
-    "prebuild": "rm -rf dist",
-    "build": "yarn build:site && yarn build:lambda",
-    "build:site": "parcel build src/index.html --no-source-maps",
-    "build:lambda": "netlify-lambda build src/lambda",
-    "start": "parcel src/index.html --open",
-    "start:lambda": "netlify-lambda serve src/lambda"
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "lint": "vue-cli-service lint"
   },
+  "main": "src/App.vue",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "core-js": "^2.6.5",
+    "querystringify": "^2.1.0",
+    "vue": "^2.6.10",
+    "vue-color": "^2.7.0",
+    "vuex": "^3.0.1"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "^3.6.0",
+    "@vue/cli-plugin-eslint": "^3.6.0",
+    "@vue/cli-service": "^3.6.0",
+    "@vue/eslint-config-prettier": "^4.0.1",
+    "babel-eslint": "^10.0.1",
+    "eslint": "^5.16.0",
+    "eslint-plugin-vue": "^5.0.0",
+    "vue-cli-plugin-netlify-lambda": "^0.1.1",
+    "vue-template-compiler": "^2.5.21"
+  },
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "node": true
+    },
+    "extends": [
+      "plugin:vue/essential",
+      "@vue/prettier"
+    ],
+    "rules": {},
+    "parserOptions": {
+      "parser": "babel-eslint"
+    }
+  },
+  "postcss": {
+    "plugins": {
+      "autoprefixer": {}
+    }
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not ie <= 8"
+  ],
   "keywords": [
     "Vue",
     "kanban",
     "kanban card printer"
   ],
-  "author": "",
-  "license": "MIT",
-  "dependencies": {
-    "axios": "^0.18.0",
-    "netlify-lambda": "^1.4.5",
-    "querystringify": "^2.1.0",
-    "vue": "^2.5.17",
-    "vue-color": "^2.7.0",
-    "vue-hot-reload-api": "^2.3.1",
-    "vuex": "^3.0.1"
-  },
-  "devDependencies": {
-    "@vue/component-compiler-utils": "^2.2.0",
-    "parcel-bundler": "^1.10.3",
-    "vue-template-compiler": "^2.5.17"
-  }
+  "license": "MIT"
 }

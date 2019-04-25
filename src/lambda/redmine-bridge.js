@@ -2,8 +2,7 @@ import axios from "axios";
 
 const { API_ENDPOINT, MAGIC_KEY } = process.env;
 
-exports.handler = async (event, context) => {
-  console.log(event);
+exports.handler = async event => {
   if (event.httpMethod === "GET") {
     if (event.queryStringParameters.issueId) {
       try {
@@ -14,10 +13,8 @@ exports.handler = async (event, context) => {
           { maxRedirects: 0 }
         );
 
-        console.log(response.data.issue);
         return createResponse(200, response.data.issue);
       } catch (error) {
-        console.error(error);
         return createResponse(400, "Error!");
       }
     }
