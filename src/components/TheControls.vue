@@ -39,6 +39,17 @@
           />
           <label for="fgColorLight">Light</label>
         </div>
+
+        <div class="fgChooser">
+          <input
+            type="radio"
+            name="fgColor"
+            id="fgColorAuto"
+            value="auto"
+            v-model="cardFgColor"
+          />
+          <label for="fgColorLight">Auto</label>
+        </div>
       </div>
 
       <div class="control">
@@ -72,6 +83,7 @@
 
 <script>
 import { Compact } from "vue-color";
+import tinycolor from "tinycolor2";
 
 export default {
   name: "ControlPanel",
@@ -87,7 +99,15 @@ export default {
         return this.selectedCard.background;
       },
       set(color) {
-        this.$store.commit("updateCard", { background: color.hex });
+        if (this.selectedCard.foregroundControl === "auto") {
+          this.$store.commit("updateCard", {
+            background: color.hex,
+            foreground:
+              tinycolor(color.hex).getLuminance() > 0.5 ? "#000000" : "#ffffff"
+          });
+        } else {
+          this.$store.commit("updateCard", { background: color.hex });
+        }
       }
     },
     cardFgColor: {
@@ -95,16 +115,28 @@ export default {
         return this.selectedCard.foregroundControl;
       },
       set(value) {
-        if (value === "dark") {
-          this.$store.commit("updateCard", {
-            foreground: "#000000",
-            foregroundControl: "dark"
-          });
-        } else if (value === "light") {
-          this.$store.commit("updateCard", {
-            foreground: "#ffffff",
-            foregroundControl: "light"
-          });
+        switch (value) {
+          case "dark":
+            this.$store.commit("updateCard", {
+              foreground: "#000000",
+              foregroundControl: "dark"
+            });
+            break;
+          case "light":
+            this.$store.commit("updateCard", {
+              foreground: "#ffffff",
+              foregroundControl: "light"
+            });
+            break;
+          case "auto":
+            this.$store.commit("updateCard", {
+              foreground:
+                tinycolor(this.selectedCard.background).getLuminance() > 0.5
+                  ? "#000000"
+                  : "#ffffff",
+              foregroundControl: "auto"
+            });
+            break;
         }
       }
     },

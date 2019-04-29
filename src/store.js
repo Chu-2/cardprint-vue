@@ -10,7 +10,7 @@ const initialState = () => ({
     {
       background: "#ffffff",
       foreground: "#000000",
-      foregroundControl: "dark",
+      foregroundControl: "auto",
       width: "2.75in",
       height: "2.75in",
       sizeControl: "big",
