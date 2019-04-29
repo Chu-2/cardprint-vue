@@ -36,9 +36,21 @@ export default {
     }
   },
   created() {
-    let query = QueryString.parse(location.search);
-    this.$store.commit("updateCard", { number: query.number });
-    this.$store.commit("updateCard", { subject: query.subject });
+    const query = QueryString.parse(location.search);
+
+    if (query.number) {
+      this.$store.dispatch("getIssue", query.number).catch(() => {
+        this.$store.commit("updateCard", {
+          number: query.number,
+          subject: query.subject
+        });
+      });
+    } else {
+      this.$store.commit("updateCard", {
+        number: query.number,
+        subject: query.subject
+      });
+    }
   }
 };
 </script>

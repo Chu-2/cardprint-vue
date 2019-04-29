@@ -11,7 +11,7 @@
         <div>
           <a
             class="link"
-            href="javascript:!function(){var e=document.getElementById('content').getElementsByTagName('h2')[0].innerText.split('#').pop(),t=document.getElementsByClassName('subject')[0].getElementsByTagName('h3')[0].innerText;window.open(window.location.origin+'/?number='+e+'&subject='+t,'_blank')}();"
+            href="javascript:!function(){var e=document.getElementById('content').getElementsByTagName('h2')[0].innerText.split('#').pop(),t=document.getElementsByClassName('subject')[0].getElementsByTagName('h3')[0].innerText;window.open('https://cardprintvue.netlify.com/?number='+e+'&subject='+t,'_blank')}();"
             >Bookmarklet</a
           >
         </div>

@@ -1,5 +1,6 @@
 import Vue from "vue";
 import Vuex from "vuex";
+import axios from "axios";
 
 Vue.use(Vuex);
 
@@ -54,6 +55,21 @@ export default new Vuex.Store({
     updateCard(state, payload) {
       const newCard = { ...state.cards[state.selectedCardIndex], ...payload };
       state.cards.splice(state.selectedCardIndex, 1, newCard);
+    }
+  },
+  actions: {
+    getIssue({ commit }, issueId) {
+      return axios
+        .get("/.netlify/functions/redmine-bridge?issueId=" + issueId)
+        .then(result => {
+          const card = {
+            number: result.data.id,
+            subject: result.data.subject,
+            tracker: result.data.parent ? result.data.parent.id : "",
+            product: result.data.project.name
+          };
+          commit("updateCard", card);
+        });
     }
   }
 });
