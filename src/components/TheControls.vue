@@ -172,7 +172,7 @@ export default {
         sizeControl: this.selectedCard.sizeControl,
         number: "",
         subject: "",
-        tracker: this.selectedCard.tracker,
+        parent: this.selectedCard.parent,
         product: this.selectedCard.product
       });
     },

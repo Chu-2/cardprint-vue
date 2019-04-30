@@ -34,9 +34,9 @@
             <div class="parentNumber">
               <input
                 type="text"
-                placeholder="Tracker"
-                :value="card.tracker"
-                @change="handleCardTracker"
+                placeholder="Parent"
+                :value="card.parent"
+                @change="handleCardParent"
                 @focus="selectCard"
               />
             </div>
@@ -79,8 +79,8 @@ export default {
     handleCardSubject(event) {
       this.$store.commit("updateCard", { subject: event.target.value });
     },
-    handleCardTracker(event) {
-      this.$store.commit("updateCard", { tracker: event.target.value });
+    handleCardParent(event) {
+      this.$store.commit("updateCard", { parent: event.target.value });
     },
     handleCardProduct(event) {
       this.$store.commit("updateCard", { product: event.target.value });

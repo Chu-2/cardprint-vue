@@ -16,7 +16,7 @@ const initialState = () => ({
       sizeControl: "big",
       number: "",
       subject: "",
-      tracker: "",
+      parent: "",
       product: ""
     }
   ]
@@ -65,8 +65,8 @@ export default new Vuex.Store({
           const card = {
             number: result.data.id,
             subject: result.data.subject,
-            tracker: result.data.parent ? result.data.parent.id : "",
-            product: result.data.project.name
+            parent: result.data.parent,
+            product: result.data.product
           };
           commit("updateCard", card);
         });
