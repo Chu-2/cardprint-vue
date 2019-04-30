@@ -4,6 +4,8 @@ import axios from "axios";
 
 Vue.use(Vuex);
 
+const sizeBigTracker = ["Story", "Epic", "Bounty"];
+
 const initialState = () => ({
   selectedCardIndex: 0,
   cards: [
@@ -62,7 +64,12 @@ export default new Vuex.Store({
       return axios
         .get("/.netlify/functions/redmine-bridge?issueId=" + issueId)
         .then(result => {
+          const sizeParams = sizeBigTracker.includes(result.data.tracker)
+            ? { width: "2.75in", height: "2.75in", sizeControl: "big" }
+            : { width: "1.75in", height: "1.75in", sizeControl: "small" };
+
           const card = {
+            ...sizeParams,
             number: result.data.id,
             subject: result.data.subject,
             parent: result.data.parent,
