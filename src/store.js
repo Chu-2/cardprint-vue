@@ -10,6 +10,7 @@ const initialState = () => ({
   selectedCardIndex: 0,
   cards: [
     {
+      isLoading: false,
       background: "#ffffff",
       foreground: "#000000",
       foregroundControl: "auto",
@@ -73,7 +74,8 @@ export default new Vuex.Store({
             number: result.data.id,
             subject: result.data.subject,
             parent: result.data.parent,
-            product: result.data.product
+            product: result.data.product,
+            isLoading: false
           };
           commit("updateCard", card);
         });

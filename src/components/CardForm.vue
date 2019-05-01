@@ -5,7 +5,16 @@
       :style="{ backgroundColor: card.background, color: card.foreground }"
     >
       <div class="wrapper">
-        <div class="card" :style="{ width: card.width, height: card.height }">
+        <div v-if="card.isLoading" class="bouncing-loader">
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+        <div
+          v-else
+          class="card"
+          :style="{ width: card.width, height: card.height }"
+        >
           <div class="number">
             <div class="numberInner">
               <input
@@ -29,7 +38,6 @@
               </textarea>
             </div>
           </div>
-
           <div class="footer">
             <div class="parentNumber">
               <input
@@ -40,7 +48,6 @@
                 @focus="selectCard"
               />
             </div>
-
             <div class="project">
               <input
                 type="text"
@@ -189,5 +196,30 @@ export default {
   .selected {
     outline: none;
   }
+}
+
+@keyframes bouncing-loader {
+  to {
+    opacity: 0.1;
+    transform: translate3d(0, -1rem, 0);
+  }
+}
+.bouncing-loader {
+  display: flex;
+  justify-content: center;
+}
+.bouncing-loader > div {
+  width: 1rem;
+  height: 1rem;
+  margin: 3rem 0.2rem;
+  background: #8385aa;
+  border-radius: 50%;
+  animation: bouncing-loader 0.6s infinite alternate;
+}
+.bouncing-loader > div:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.bouncing-loader > div:nth-child(3) {
+  animation-delay: 0.4s;
 }
 </style>

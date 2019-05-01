@@ -39,14 +39,17 @@ export default {
     const query = QueryString.parse(location.search);
 
     if (query.number) {
+      this.$store.commit("updateCard", { isLoading: true });
       this.$store.dispatch("getIssue", query.number).catch(() => {
         this.$store.commit("updateCard", {
+          isLoading: false,
           number: query.number,
           subject: query.subject
         });
       });
     } else {
       this.$store.commit("updateCard", {
+        isLoading: false,
         number: query.number,
         subject: query.subject
       });
