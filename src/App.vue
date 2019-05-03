@@ -47,12 +47,6 @@ export default {
           subject: query.subject
         });
       });
-    } else {
-      this.$store.commit("updateCard", {
-        isLoading: false,
-        number: query.number,
-        subject: query.subject
-      });
     }
   }
 };

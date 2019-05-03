@@ -175,6 +175,10 @@ export default {
         parent: this.selectedCard.parent,
         product: this.selectedCard.product
       });
+      this.$store.commit(
+        "updateSelectedCardIndex",
+        this.$store.getters.getCards.length - 1
+      );
     },
     removeCard() {
       this.$store.commit("removeSelectedCard");

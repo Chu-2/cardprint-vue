@@ -28,6 +28,9 @@ const initialState = () => ({
 export default new Vuex.Store({
   state: initialState(),
   getters: {
+    getCards(state) {
+      return state.cards;
+    },
     getSelectedCard(state) {
       return state.cards[state.selectedCardIndex];
     }
@@ -35,7 +38,6 @@ export default new Vuex.Store({
   mutations: {
     createCard(state, payload) {
       state.cards.push(payload);
-      state.selectedCardIndex = state.cards.length - 1;
     },
     removeSelectedCard(state) {
       if (state.cards.length === 1) {
