@@ -44,16 +44,24 @@ export default {
         this.$store.commit("createCard", { isLoading: true });
       }
 
-      for (let issueId of issueIds) {
-        this.$store.commit("updateCard", { isLoading: true });
-        this.$store.dispatch("getIssue", issueId).catch(() => {
-          this.$store.commit("updateCard", {
-            isLoading: false,
-            number: issueId,
-            subject: query.subject
-          });
+      issueIds.forEach((issueId, index) => {
+        this.$store.commit("updateCard", {
+          index: index,
+          card: { isLoading: true }
         });
-      }
+        this.$store
+          .dispatch("getIssue", { index: index, issueId: issueId })
+          .catch(() => {
+            this.$store.commit("updateCard", {
+              index: index,
+              card: {
+                isLoading: false,
+                number: issueId,
+                subject: query.subject
+              }
+            });
+          });
+      });
     }
   }
 };

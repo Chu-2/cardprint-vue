@@ -51,18 +51,22 @@ export default new Vuex.Store({
       const initial = initialState();
       Object.keys(initial).forEach(key => (state[key] = initial[key]));
     },
-    updateSelectedCardIndex(state, index) {
-      state.selectedCardIndex = index;
-    },
     updateCard(state, payload) {
+      const newCard = { ...state.cards[payload.index], ...payload.card };
+      state.cards.splice(payload.index, 1, newCard);
+    },
+    updateSelectedCard(state, payload) {
       const newCard = { ...state.cards[state.selectedCardIndex], ...payload };
       state.cards.splice(state.selectedCardIndex, 1, newCard);
+    },
+    updateSelectedCardIndex(state, index) {
+      state.selectedCardIndex = index;
     }
   },
   actions: {
-    getIssue({ commit }, issueId) {
+    getIssue({ commit }, payload) {
       return axios
-        .get("/.netlify/functions/redmine-bridge?issueId=" + issueId)
+        .get("/.netlify/functions/redmine-bridge?issueId=" + payload.issueId)
         .then(result => {
           const sizeParams = sizeBigTracker.includes(result.data.tracker)
             ? { width: "2.75in", height: "2.75in", sizeControl: "big" }
@@ -76,7 +80,8 @@ export default new Vuex.Store({
             product: result.data.product,
             isLoading: false
           };
-          commit("updateCard", card);
+
+          commit("updateCard", { index: payload.index, card: card });
         });
     }
   }

@@ -82,16 +82,16 @@ export default {
       this.$store.commit("updateSelectedCardIndex", this.index);
     },
     handleCardNumber(event) {
-      this.$store.commit("updateCard", { number: event.target.value });
+      this.$store.commit("updateSelectedCard", { number: event.target.value });
     },
     handleCardSubject(event) {
-      this.$store.commit("updateCard", { subject: event.target.value });
+      this.$store.commit("updateSelectedCard", { subject: event.target.value });
     },
     handleCardParent(event) {
-      this.$store.commit("updateCard", { parent: event.target.value });
+      this.$store.commit("updateSelectedCard", { parent: event.target.value });
     },
     handleCardProduct(event) {
-      this.$store.commit("updateCard", { product: event.target.value });
+      this.$store.commit("updateSelectedCard", { product: event.target.value });
     }
   }
 };

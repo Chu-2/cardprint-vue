@@ -100,13 +100,13 @@ export default {
       },
       set(color) {
         if (this.selectedCard.foregroundControl === "auto") {
-          this.$store.commit("updateCard", {
+          this.$store.commit("updateSelectedCard", {
             background: color.hex,
             foreground:
               tinycolor(color.hex).getLuminance() > 0.5 ? "#000000" : "#ffffff"
           });
         } else {
-          this.$store.commit("updateCard", { background: color.hex });
+          this.$store.commit("updateSelectedCard", { background: color.hex });
         }
       }
     },
@@ -117,19 +117,19 @@ export default {
       set(value) {
         switch (value) {
           case "dark":
-            this.$store.commit("updateCard", {
+            this.$store.commit("updateSelectedCard", {
               foreground: "#000000",
               foregroundControl: "dark"
             });
             break;
           case "light":
-            this.$store.commit("updateCard", {
+            this.$store.commit("updateSelectedCard", {
               foreground: "#ffffff",
               foregroundControl: "light"
             });
             break;
           case "auto":
-            this.$store.commit("updateCard", {
+            this.$store.commit("updateSelectedCard", {
               foreground:
                 tinycolor(this.selectedCard.background).getLuminance() > 0.5
                   ? "#000000"
@@ -146,13 +146,13 @@ export default {
       },
       set(value) {
         if (value === "big") {
-          this.$store.commit("updateCard", {
+          this.$store.commit("updateSelectedCard", {
             width: "2.75in",
             height: "2.75in",
             sizeControl: "big"
           });
         } else if (value === "small") {
-          this.$store.commit("updateCard", {
+          this.$store.commit("updateSelectedCard", {
             width: "1.75in",
             height: "1.75in",
             sizeControl: "small"
