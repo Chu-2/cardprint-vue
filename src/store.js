@@ -28,9 +28,6 @@ const initialState = () => ({
 export default new Vuex.Store({
   state: initialState(),
   getters: {
-    getCards(state) {
-      return state.cards;
-    },
     getSelectedCard(state) {
       return state.cards[state.selectedCardIndex];
     }

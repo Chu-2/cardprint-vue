@@ -177,7 +177,7 @@ export default {
       });
       this.$store.commit(
         "updateSelectedCardIndex",
-        this.$store.getters.getCards.length - 1
+        this.$store.state.cards.length - 1
       );
     },
     removeCard() {

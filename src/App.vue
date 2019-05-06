@@ -39,14 +39,21 @@ export default {
     const query = QueryString.parse(location.search);
 
     if (query.number) {
-      this.$store.commit("updateCard", { isLoading: true });
-      this.$store.dispatch("getIssue", query.number).catch(() => {
-        this.$store.commit("updateCard", {
-          isLoading: false,
-          number: query.number,
-          subject: query.subject
+      const issueIds = query.number.split(",");
+      for (let i = 1; i < issueIds.length; ++i) {
+        this.$store.commit("createCard", { isLoading: true });
+      }
+
+      for (let issueId of issueIds) {
+        this.$store.commit("updateCard", { isLoading: true });
+        this.$store.dispatch("getIssue", issueId).catch(() => {
+          this.$store.commit("updateCard", {
+            isLoading: false,
+            number: issueId,
+            subject: query.subject
+          });
         });
-      });
+      }
     }
   }
 };

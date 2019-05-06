@@ -3,6 +3,7 @@
     <div
       :class="['cardBleed', selectedClass]"
       :style="{ backgroundColor: card.background, color: card.foreground }"
+      @click="selectCard"
     >
       <div class="wrapper">
         <div v-if="card.isLoading" class="bouncing-loader">
