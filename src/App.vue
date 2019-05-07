@@ -45,10 +45,6 @@ export default {
       }
 
       issueIds.forEach((issueId, index) => {
-        this.$store.commit("updateCard", {
-          index: index,
-          card: { isLoading: true }
-        });
         this.$store
           .dispatch("getIssue", { index: index, issueId: issueId })
           .catch(() => {

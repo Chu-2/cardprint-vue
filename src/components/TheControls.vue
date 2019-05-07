@@ -170,8 +170,6 @@ export default {
         width: this.selectedCard.width,
         height: this.selectedCard.height,
         sizeControl: this.selectedCard.sizeControl,
-        number: "",
-        subject: "",
         parent: this.selectedCard.parent,
         product: this.selectedCard.product
       });

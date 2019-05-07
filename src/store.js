@@ -6,27 +6,22 @@ Vue.use(Vuex);
 
 const sizeBigTracker = ["Story", "Epic", "Bounty"];
 
-const initialState = () => ({
-  selectedCardIndex: 0,
-  cards: [
-    {
-      isLoading: false,
-      background: "#ffffff",
-      foreground: "#000000",
-      foregroundControl: "auto",
-      width: "2.75in",
-      height: "2.75in",
-      sizeControl: "big",
-      number: "",
-      subject: "",
-      parent: "",
-      product: ""
-    }
-  ]
-});
+const initialCardState = {
+  isLoading: false,
+  background: "#ffffff",
+  foreground: "#000000",
+  foregroundControl: "auto",
+  width: "2.75in",
+  height: "2.75in",
+  sizeControl: "big",
+  number: "",
+  subject: "",
+  parent: "",
+  product: ""
+};
 
 export default new Vuex.Store({
-  state: initialState(),
+  state: { selectedCardIndex: 0, cards: [{ ...initialCardState }] },
   getters: {
     getSelectedCard(state) {
       return state.cards[state.selectedCardIndex];
@@ -34,7 +29,7 @@ export default new Vuex.Store({
   },
   mutations: {
     createCard(state, payload) {
-      state.cards.push(payload);
+      state.cards.push({ ...initialCardState, ...payload });
     },
     removeSelectedCard(state) {
       if (state.cards.length === 1) {
@@ -48,8 +43,8 @@ export default new Vuex.Store({
           : state.selectedCardIndex;
     },
     resetState(state) {
-      const initial = initialState();
-      Object.keys(initial).forEach(key => (state[key] = initial[key]));
+      state.selectedCardIndex = 0;
+      state.cards = [{ ...initialCardState }];
     },
     updateCard(state, payload) {
       const newCard = { ...state.cards[payload.index], ...payload.card };
@@ -65,6 +60,7 @@ export default new Vuex.Store({
   },
   actions: {
     getIssue({ commit }, payload) {
+      commit("updateCard", { index: payload.index, card: { isLoading: true } });
       return axios
         .get("/.netlify/functions/redmine-bridge?issueId=" + payload.issueId)
         .then(result => {
