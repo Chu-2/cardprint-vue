@@ -26,6 +26,11 @@
                 @change="handleCardNumber"
                 @focus="selectCard"
               />
+              <font-awesome-icon
+                icon="sync"
+                class="iconRefresh"
+                @click="handleCardRefresh"
+              />
             </div>
           </div>
           <div class="body">
@@ -92,6 +97,24 @@ export default {
     },
     handleCardProduct(event) {
       this.$store.commit("updateSelectedCard", { product: event.target.value });
+    },
+    handleCardRefresh() {
+      if (this.card.number) {
+        this.$store
+          .dispatch("getIssue", {
+            index: this.index,
+            issueId: this.card.number
+          })
+          .catch(() => {
+            this.$store.commit("updateCard", {
+              index: this.index,
+              card: {
+                ...this.card,
+                isLoading: false
+              }
+            });
+          });
+      }
     }
   }
 };
@@ -136,6 +159,11 @@ export default {
   width: 75%;
   background-color: transparent;
   border: none;
+}
+
+.iconRefresh {
+  cursor: pointer;
+  float: right;
 }
 
 .body {
@@ -196,6 +224,10 @@ export default {
 
   .selected {
     outline: none;
+  }
+
+  .iconRefresh {
+    display: none;
   }
 }
 
